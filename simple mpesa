@@ -1,0 +1,53 @@
+package exercises;
+
+import java.util.Scanner;
+
+public class MpesaStatement {
+	public static void main(String[]args) {
+		int accountBalance =90, newBalance,option,amount,pin1 ;
+		String name=new String();
+		
+		Scanner input=new Scanner(System.in);
+		System.out.println("ennter your name ");
+
+		name=input.nextLine();
+		System.out.println("ennter your pin ");
+		pin1=input.nextInt();
+		System.out.println("hello there "+name+"  how may i help you \n 1: Send money \n 2: Check balance ");
+		option=input.nextInt();
+		
+		switch(option) {
+		case 1:
+			System.out.println("Enter phone number");
+			 String number=input.next();
+			while(number.length()<10||number.length()>10) {
+				System.out.println("Enter a valid nummber");
+				 number=input.next();
+			}
+			System.out.println("how much do you want to send\n enter amount ");
+			amount=input.nextInt();
+			while(amount > accountBalance) {
+				System.out.println("You dont have enough money in your  account your balance is "+ accountBalance +" \n Enter lower amount");
+				amount=input.nextInt();
+			}
+		      accountBalance-=amount;
+		      newBalance=accountBalance;
+		      
+		      int pin2=0000000000;
+		  	
+		  	 while (pin1!=pin2){
+		  		 
+		  		System.out.println(" wrong pin!!! ennter your pin ");
+			  	pin2= input.nextInt();
+		  	 
+		      System.out.println("You have successfuly transfered "+ amount +" to " + number + " .your new mpesa balance is "+(double)newBalance);
+		  	 }
+			
+		}
+		
+		
+				
+	}
+
+}
+
