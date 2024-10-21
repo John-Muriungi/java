@@ -1,0 +1,43 @@
+package exercises;
+
+import java.util.Scanner;
+
+public class MorgageCalc {
+
+	public static void main(String[] args) {
+	    final byte  MONTHS=12;
+	    //final byte PERCENT = 100;
+	
+		int numberOfPayments;
+		double mortgage, principal, r, period, rate, x,y;
+		
+		Scanner input= new Scanner(System.in);
+		System.out.println("Hey there welcome. i amhere tohelp you calculate your morgage enter the following:");
+		System.out.print("Principal:");
+		principal=input.nextDouble();
+		
+		System.out.print("Annual rate (%): ");
+		rate=input.nextDouble();
+		r= rate;//(rate/PERCENT);
+		System.out.print("Priod (in years):");
+		period=input.nextDouble();
+
+		input.close();
+		numberOfPayments=(int) (period * MONTHS);
+		//System.out.println(" "+ numberOfPayments +",  "+ principal +",  "+ r);
+		
+		x=r * Math.pow((1+r),numberOfPayments);
+		y=Math.pow((1+r), numberOfPayments)-1;
+		mortgage= principal * (x/y);
+		System.out.println(mortgage);
+		input.close();
+		{
+			
+		}
+		
+		
+		
+
+	}
+
+}
