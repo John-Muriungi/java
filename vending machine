@@ -1,0 +1,91 @@
+/**
+Consider a vending machine that offers the following options:
+[1] Get gum
+[2] Get chocolate
+[3] Get popcorn
+[4] Get juice
+[5] Display total sold so far
+[6] Quit
+Design and implement a program that continuously allows users to select from these options. When options 1–4 are selected an appropriate message is to be displayed acknowledging their choice. For example, when option 3 is selected the following message could be displayed:
+Here is your popcorn
+When option 5 is selected, the number of each type of item sold is displayed. For example:
+3 items of gum sold
+2 items of chocolate sold
+6 items of popcorn sold
+9 items of juice sold
+When option 6 is chosen the program terminates. If an option other than 1–6 is entered an appropriate error message should be displayed, such as:
+Error, options 1-6 only!
+
+ */
+/**
+ * 
+ */
+package labecxercise;
+
+import java.util.Scanner;
+
+public class VendingMachine{
+	  
+	  public static void main(String []args) {
+		  byte options, gumsBought=0,chocolateBought=0,popcornBought=0,juiceBought=0;
+		 boolean machineIsOpen=true;
+		  
+		 Scanner input= new Scanner(System.in);
+		 		 while(machineIsOpen) {
+			 
+		 
+		
+		 System.out.println("Hello there welcome ...press the following options for service:\n"
+				 +"[1] Get gum \n"
+		 		+ "[2] Get chocolate \n"
+		 		+ "[3] Get popcorn \n"
+		 		+ "[4] Get juice \n"
+		 		+ "[5] Display total sold so far \n"
+		 		+ "[6] Quit");
+		
+		 options= input.nextByte();
+		 
+		  switch(options) {
+		  case 1:			  
+			  System.out.println("Here is your Gum \n");			
+			  gumsBought++;	  
+			 break;
+		  case 2:
+			  System.out.println("Here is your chocolate \n"); 
+			  chocolateBought++;
+			  break;
+		  case 3:
+			  System.out.println("Here is your porpcorn \n"); 
+			  popcornBought++;
+			  break;
+		  case 4:
+			  System.out.println("Here is your juice \n");
+			  juiceBought++;
+			  break;
+		  case 5:
+			  System.out.println("You have bought:"
+		  +"\n******************************************\n"
+		  +gumsBought+"items of gum sold\n "
+		  +chocolateBought +"items of chocolate sold \n"
+		  +popcornBought +"items of popcorn sold \n"
+		  +juiceBought+" items of juice sold\n"
+		  +"\n******************************************\n"
+		  );
+			  break;
+		  case 6:
+			  System.out.println("thanks for shoping with us..welcome back again. \n");
+			  machineIsOpen=false;
+			  break;
+		  default:
+				  System.out.println("Error, options 1-6 only!\n");				  
+		  
+		  }
+		  
+		 
+		 }
+		  input.close();	
+	  }
+	  
+	  
+	  
+  }
