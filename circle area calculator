@@ -1,0 +1,101 @@
+    
+// My srever side code ....
+
+package mycalculator;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class Theserver {
+	
+	public static final float PI = 3.14f;
+	public static void main(String[] args) {
+		
+		System.out.println("Waiting for connection");
+		
+		// creating the server socket 
+		
+		ServerSocket ss;
+		try {
+			ss = new ServerSocket(1960);
+			Socket soc = ss.accept();
+			System.out.println("Connection is now Established");
+			
+			// getting the client  inputs
+			Scanner in= new Scanner(soc.getInputStream());
+			//reading the radius
+		    double radius =in.nextDouble();
+		    
+		    //sending the result to the client
+		    PrintWriter  out= new PrintWriter(soc.getOutputStream(),true);
+		    out.println("The area of a circle of radius "+ radius+ " is: "
+		    +circleAreaCalculator((float) radius) );
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	static float circleAreaCalculator(float radius) {
+		
+		
+		return (float) (Math.pow(radius,2) * PI);
+		
+		
+	}
+
+}
+
+
+
+//MY CLIENT SIDE CODE
+package mycalculator;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class TheUser {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+	
+		try {
+			System.out.println("Client started!");
+			
+			//establish connection with the server socket
+			
+			Socket soc =new Socket("localhost",1960);
+			 
+			//read the users input from keyboard
+			Scanner userInput =new Scanner(System.in);
+			System.out.print("Enter the radius of the circle:");
+			double radius=userInput.nextInt(); 
+			
+			//sending users input to the server
+			
+			PrintWriter out= new PrintWriter(soc.getOutputStream(),true);
+			out.println(radius);
+			
+			//Receiving input from server
+			Scanner in =new Scanner(soc.getInputStream());
+			System.out.println(in.nextLine());
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+}
+
