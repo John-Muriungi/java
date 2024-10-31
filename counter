@@ -1,0 +1,19 @@
+package thislesson;
+
+public class Counter3 {
+
+	public static void main(String[] args) {
+		int max =100,total=0;
+		 for (int i =0; i<=100; i++) {
+			 if (i%7==0) {
+				total+=i; 
+				
+			 }
+			
+		 }
+		 System.out.println("The total of the numbers divisible by 7 is:"+total);
+		
+		
+	}
+
+}
