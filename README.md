@@ -1,2 +1,2 @@
 # java
-i am just having fun with java
+a few exercises with java 
